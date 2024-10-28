@@ -9,13 +9,13 @@ class Tastatura(trenutnaPozicija: Pair<Int, Int>) : Instrukcija {
             field = novaPozicija
         }
 
-    override fun pomjeri(trenutnaPozicija:Pair<Int,Int>, instrukcija:Char) : Pair<Int, Int> {
+    override fun pomjeri(trenutnaPozicija: Pair<Int, Int>, instrukcija: Smjer): Pair<Int, Int> {
         var novaPozicija = matricaDugmadi[trenutnaPozicija.first][trenutnaPozicija.second]
         novaPozicija = when(instrukcija){
-            '>' -> if(novaPozicija % 3 != 0) novaPozicija + 1 else novaPozicija
-            '<' -> if((novaPozicija-1) % 3 != 0 ) novaPozicija - 1 else novaPozicija
-            '^' -> if (novaPozicija - 3 in 1..9) novaPozicija - 3 else novaPozicija
-            'v' ->  if (novaPozicija + 3 in 1..9) novaPozicija + 3 else novaPozicija
+            Smjer.DESNO -> if(novaPozicija % 3 != 0) novaPozicija + 1 else novaPozicija
+            Smjer.LIJEVO -> if((novaPozicija-1) % 3 != 0 ) novaPozicija - 1 else novaPozicija
+            Smjer.GORE -> if (novaPozicija - 3 in 1..9) novaPozicija - 3 else novaPozicija
+            Smjer.DOLE -> if (novaPozicija + 3 in 1..9) novaPozicija + 3 else novaPozicija
             else -> novaPozicija
         }
 
