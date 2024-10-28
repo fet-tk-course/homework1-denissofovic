@@ -6,7 +6,14 @@ class Dekoder{
         var kod = 0
         for(nizInstrukcija in listaInstrukcija){
             for(instrukcija in nizInstrukcija){
-                tastatura.trenutnaPozicija = tastatura.pomjeri(tastatura.trenutnaPozicija, instrukcija)
+                val smjer = when (instrukcija) {
+                    '^' -> Smjer.GORE
+                    'v' -> Smjer.DOLE
+                    '<' -> Smjer.LIJEVO
+                    '>' -> Smjer.DESNO
+                    else -> continue
+                }
+                tastatura.trenutnaPozicija = tastatura.pomjeri(tastatura.trenutnaPozicija,smjer)
             }
             kod = kod * 10 + tastatura.matricaDugmadi[tastatura.trenutnaPozicija.first][tastatura.trenutnaPozicija.second]
         }
